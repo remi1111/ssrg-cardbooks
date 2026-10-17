@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SuperStar Cardbook Manager - Game Hub</title>
+    <link rel="stylesheet" href="styling/index.css">
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header class="site-header">
+        <div class="brand-lockup">
+            <div class="brand-mark">
+                ★
+            </div>
+            <div>
+                <span class="brand-name">SUPERSTAR</span>
+                <span class="brand-caption">Master Inventory Hub</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <main class="main-content">
+        <div class="intro">
+            <div class="eyebrow">
+                <span>⚡ Centralized Multi-Game Cardbook</span>
+            </div>
+            <h1 class="page-title">
+                Select Your <span class="title-accent">SuperStar Universe</span>
+            </h1>
+            <p class="intro-copy">
+                Choose a title below to manage themes, track missing cards, and synchronize your string inventory across games.
+            </p>
+
+            <!-- Search Bar -->
+            <div class="search-wrap">
+                <span class="search-icon">🔍</span>
+                <input type="text" id="gameSearch" onkeyup="filterGames()" placeholder="Search game titles or artists (e.g., JYP, SM, IVE)..." class="search-input">
+            </div>
+        </div>
+
+        <!-- Games Grid -->
+        <div id="gamesGrid" class="games-grid">
+
+            <!-- SuperStar JYPNation (Official Blue/Pink branding) -->
+            <a href="cardbook.html" data-name="superstar jypnation jyp twice stray kids itzy nmixx" class="glass-card game-card--jyp">
+                <div class="game-glow"></div>
+                <div class="game-card-top">
+                    <div class="game-icon">
+                        🎵
+                    </div>
+                    <span class="game-tag">JYP</span>
+                </div>
+                <h3 class="game-title">SuperStar JYPNation</h3>
+                <p class="game-description">TWICE, Stray Kids, ITZY, NMIXX, Day6 & JYP artists.</p>
+                <div class="game-launch">
+                    <span>Launch Manager</span>
+                    <span class="game-launch-arrow">→</span>
+                </div>
+            </a>
+
+            <!-- SuperStar SMTOWN (Official Pink-Red/Silver/Dark branding) -->
+            <a href="/smtown/" data-name="superstar smtown sm exo nct red velvet aespa" class="glass-card game-card--sm">
+                <div class="game-glow"></div>
+                <div class="game-card-top">
+                    <div class="game-icon">
+                        ✨
+                    </div>
+                    <span class="game-tag">SM</span>
+                </div>
+                <h3 class="game-title">SuperStar SMTOWN</h3>
+                <p class="game-description">EXO, NCT, Red Velvet, aespa, BoA & SMTOWN family.</p>
+                <div class="game-launch">
+                    <span>Launch Manager</span>
+                    <span class="game-launch-arrow">→</span>
+                </div>
+            </a>
+
+            <!-- SuperStar STARSHIP (Official Orange/Blue Starship branding) -->
+            <a href="/starship/" data-name="superstar starship ive monsta x cravity wjsn" class="glass-card game-card--starship">
+                <div class="game-glow"></div>
+                <div class="game-card-top">
+                    <div class="game-icon">
+                        ⭐
+                    </div>
+                    <span class="game-tag">STARSHIP</span>
+                </div>
+                <h3 class="game-title">SuperStar STARSHIP</h3>
+                <p class="game-description">IVE, MONSTA X, CRAVITY, WJSN & Starship artists.</p>
+                <div class="game-launch">
+                    <span>Launch Manager</span>
+                    <span class="game-launch-arrow">→</span>
+                </div>
+            </a>
+
+            <!-- SuperStar YG (Official Black & Neon Yellow/Blue YG branding) -->
+            <a href="/yg/" data-name="superstar yg blackpink treasure winner akmu" class="glass-card game-card--yg">
+                <div class="game-glow"></div>
+                <div class="game-card-top">
+                    <div class="game-icon">
+                        🔥
+                    </div>
+                    <span class="game-tag">YG</span>
+                </div>
+                <h3 class="game-title">SuperStar YG</h3>
+                <p class="game-description">BLACKPINK, TREASURE, WINNER, AKMU & YG legends.</p>
+                <div class="game-launch">
+                    <span>Launch Manager</span>
+                    <span class="game-launch-arrow">→</span>
+                </div>
+            </a>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="page-footer">
+        <p>© 2026 SuperStar Cardbook Manager. Synchronized Master Inventory Protocol.</p>
+    </footer>
+
+    <!-- Search filter script -->
+    <script>
+        function filterGames() {
+            const input = document.getElementById('gameSearch').value.toLowerCase();
+            const cards = document.querySelectorAll('#gamesGrid > a');
+
+            cards.forEach(card => {
+                const keywords = card.getAttribute('data-name');
+                if (keywords.includes(input)) {
+                    card.style.display = "block";
+                } else {
+                    card.style.display = "none";
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>

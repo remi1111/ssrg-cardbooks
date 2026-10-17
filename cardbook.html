@@ -197,13 +197,44 @@
             margin-bottom: 0;
         }
 
+        .theme-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 14px;
+        }
+
         .theme-title {
             font-size: 15px;
             font-weight: 700;
             color: #94a3b8;
-            margin-bottom: 14px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
+        }
+
+        /* Theme Type Badges */
+        .theme-badge {
+            font-size: 10px;
+            font-weight: 800;
+            padding: 3px 8px;
+            border-radius: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: inline-block;
+        }
+
+        .theme-badge.limited {
+            background: rgba(234, 179, 8, 0.15);
+            color: #facc15;
+            border: 1px solid rgba(234, 179, 8, 0.3);
+            box-shadow: 0 0 10px rgba(234, 179, 8, 0.15);
+        }
+
+        .theme-badge.event {
+            background: rgba(236, 72, 153, 0.15);
+            color: #f472b6;
+            border: 1px solid rgba(236, 72, 153, 0.3);
+            box-shadow: 0 0 10px rgba(236, 72, 153, 0.15);
         }
 
         .cards-grid {
@@ -317,7 +348,7 @@
                 <h1>SuperStar Cardbook Manager</h1>
                 <p>JSON Data-Driven Static Architecture</p>
             </div>
-            <a href="#" class="back-btn">
+            <a href="index.html" class="back-btn">
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M19 12H5"></path>
                     <polyline points="12 19 5 12 12 5"></polyline>
@@ -350,7 +381,7 @@
     </div>
 
     <script>
-        // --- 1. Your JSON Data Object (Can easily be moved to an external cards.json file) ---
+        // --- 1. Your JSON Data Object ---
         const cardsData = {
             "artists": [
                 {
@@ -358,18 +389,34 @@
                     "name": "TWICE",
                     "themes": [
                         {
-                            "id": "formula_of_love",
-                            "name": "Formula of Love",
+                            "id": "fancy",
+                            "name": "FANCY",
+                            "themeType": "normal",
                             "cards": [
                                 { "globalId": 0, "name": "Nayeon" },
                                 { "globalId": 1, "name": "Jeongyeon" },
-                                { "globalId": 2, "name": "Momo" },
-                                { "globalId": 3, "name": "Sana" },
-                                { "globalId": 4, "name": "Jihyo" },
-                                { "globalId": 5, "name": "Mina" },
-                                { "globalId": 6, "name": "Dahyun" },
-                                { "globalId": 7, "name": "Chaeyoung" },
-                                { "globalId": 8, "name": "Tzuyu" }
+                                { "globalId": 2, "name": "Momo" }
+                            ]
+                        },
+                        {
+                            "id": "formula_of_love",
+                            "name": "Formula of Love",
+                            "themeType": "limited",
+                            "cards": [
+                                { "globalId": 3, "name": "Nayeon" },
+                                { "globalId": 4, "name": "Jeongyeon" },
+                                { "globalId": 5, "name": "Momo" },
+                                { "globalId": 6, "name": "Sana" }
+                            ]
+                        },
+                        {
+                            "id": "halloween_party",
+                            "name": "Monster House",
+                            "themeType": "event",
+                            "cards": [
+                                { "globalId": 7, "name": "Jihyo" },
+                                { "globalId": 8, "name": "Mina" },
+                                { "globalId": 9, "name": "Dahyun" }
                             ]
                         }
                     ]
@@ -381,12 +428,11 @@
                         {
                             "id": "checkmate",
                             "name": "CHECKMATE",
+                            "themeType": "limited",
                             "cards": [
-                                { "globalId": 9, "name": "Yeji" },
-                                { "globalId": 10, "name": "Lia" },
-                                { "globalId": 11, "name": "Ryujin" },
-                                { "globalId": 12, "name": "Chaeryeong" },
-                                { "globalId": 13, "name": "Yuna" }
+                                { "globalId": 10, "name": "Yeji" },
+                                { "globalId": 11, "name": "Lia" },
+                                { "globalId": 12, "name": "Ryujin" }
                             ]
                         }
                     ]
@@ -409,7 +455,6 @@
 
         // --- 2. Render Cards on Load ---
         document.addEventListener("DOMContentLoaded", () => {
-            // Calculate total global card count across all artists/themes
             totalGlobalCardsCount = cardsData.artists.reduce((acc, artist) => {
                 return acc + artist.themes.reduce((tAcc, theme) => tAcc + theme.cards.length, 0);
             }, 0);
@@ -429,9 +474,22 @@
                 `;
 
                 artist.themes.forEach(theme => {
+                    // Generate Badge HTML according to themeType
+                    let badgeHTML = '';
+                    const type = (theme.themeType || 'normal').toLowerCase();
+
+                    if (type === 'limited') {
+                        badgeHTML = `<span class="theme-badge limited">Limited Theme</span>`;
+                    } else if (type === 'event' || type === 'event limited' || type === 'event_limited') {
+                        badgeHTML = `<span class="theme-badge event">Event Limited</span>`;
+                    }
+
                     artistHTML += `
                         <div class="theme-section">
-                            <div class="theme-title">${theme.name}</div>
+                            <div class="theme-header">
+                                <span class="theme-title">${theme.name}</span>
+                                ${badgeHTML}
+                            </div>
                             <div class="cards-grid">
                     `;
 
@@ -487,7 +545,6 @@
             const masterString = masterChars.join('');
             document.getElementById('cardStringBox').value = masterString;
 
-            // Persist to browser LocalStorage
             localStorage.setItem('ss_card_inventory', masterString);
             alert("Inventory string generated & saved to browser!");
         }
@@ -505,7 +562,6 @@
                 return;
             }
 
-            // Adjust string padding if needed
             if (inputString.length > totalGlobalCardsCount) {
                 inputString = inputString.substring(0, totalGlobalCardsCount);
             }
