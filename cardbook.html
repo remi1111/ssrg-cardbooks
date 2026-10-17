@@ -53,11 +53,10 @@
 
     </div>
     <script>
-        // --- 1. Your JSON Data Object ---
+        // Fetch data.
         let cardsData = null;
         let totalGlobalCardsCount = 0;
 
-        // Fetch and load cards.json when the DOM is ready
         document.addEventListener("DOMContentLoaded", async () => {
             try {
                 const response = await fetch('./cards.json');
@@ -77,7 +76,7 @@
                 });
                 totalGlobalCardsCount = maxId + 1;
 
-                renderCardbook(cardsData.games, "jypnation"); // Render only the JYP Nation game by default
+                renderCardbook(cardsData.games, "jypnation");
                 loadSavedInventory();
 
             } catch (error) {
