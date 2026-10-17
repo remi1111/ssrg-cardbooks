@@ -1,84 +1,86 @@
 {
-    "artists": [
+  "games": [
+    {
+      "id": "jypnation",
+      "name": "SuperStar JYPNATION",
+      "artists": [
         {
-            "id": "twice",
-            "name": "TWICE",
-            "themes": [
-                {
-                    "id": "formula_of_love",
-                    "name": "Formula of Love",
-                    "cards": [
-                        {
-                            "globalId": 0,
-                            "name": "Nayeon"
-                        },
-                        {
-                            "globalId": 1,
-                            "name": "Jeongyeon"
-                        },
-                        {
-                            "globalId": 2,
-                            "name": "Momo"
-                        },
-                        {
-                            "globalId": 3,
-                            "name": "Sana"
-                        },
-                        {
-                            "globalId": 4,
-                            "name": "Jihyo"
-                        },
-                        {
-                            "globalId": 5,
-                            "name": "Mina"
-                        },
-                        {
-                            "globalId": 6,
-                            "name": "Dahyun"
-                        },
-                        {
-                            "globalId": 7,
-                            "name": "Chaeyoung"
-                        },
-                        {
-                            "globalId": 8,
-                            "name": "Tzuyu"
-                        }
-                    ]
-                }
-            ]
+          "id": "twice",
+          "name": "TWICE",
+          "themes": [
+            {
+              "id": "fancy",
+              "name": "FANCY",
+              "themeType": "normal",
+              "cards": [
+                { "globalId": 0, "name": "Nayeon", "removed": false },
+                { "globalId": 1, "name": "Jeongyeon", "removed": false },
+                { "globalId": 2, "name": "Momo", "removed": false }
+              ]
+            },
+            {
+              "id": "formula_of_love",
+              "name": "Formula of Love",
+              "themeType": "limited",
+              "cards": [
+                { "globalId": 3, "name": "Nayeon", "removed": false },
+                { "globalId": 4, "name": "Jeongyeon", "removed": false },
+                { "globalId": 5, "name": "Momo", "removed": false }
+              ]
+            }
+          ]
         },
         {
-            "id": "itzy",
-            "name": "ITZY",
-            "themes": [
-                {
-                    "id": "checkmate",
-                    "name": "CHECKMATE",
-                    "cards": [
-                        {
-                            "globalId": 9,
-                            "name": "Yeji"
-                        },
-                        {
-                            "globalId": 10,
-                            "name": "Lia"
-                        },
-                        {
-                            "globalId": 11,
-                            "name": "Ryujin"
-                        },
-                        {
-                            "globalId": 12,
-                            "name": "Chaeryeong"
-                        },
-                        {
-                            "globalId": 13,
-                            "name": "Yuna"
-                        }
-                    ]
-                }
-            ]
+          "id": "itzy",
+          "name": "ITZY",
+          "themes": [
+            {
+              "id": "checkmate",
+              "name": "CHECKMATE",
+              "themeType": "event",
+              "cards": [
+                { "globalId": 10, "name": "Yeji", "removed": false },
+                { "globalId": 11, "name": "Lia", "removed": false },
+                { "globalId": 12, "name": "Ryujin", "removed": false }
+              ]
+            }
+          ]
         }
-    ]
+      ]
+    },
+    {
+      "id": "smtown",
+      "name": "SuperStar SMTOWN",
+      "artists": [
+        {
+          "id": "aespa",
+          "name": "aespa",
+          "themes": [
+            {
+              "id": "next_level",
+              "name": "Next Level",
+              "themeType": "limited",
+              "cards": [
+                { "globalId": 6, "name": "Karina", "removed": false },
+                { "globalId": 7, "name": "Giselle", "removed": false },
+                { "globalId": 8, "name": "Winter", "removed": false },
+                { "globalId": 9, "name": "Ningning", "removed": false }
+              ]
+            },
+            {
+              "id": "next_level",
+              "name": "Next Level",
+              "themeType": "limited",
+              "cards": [
+                { "globalId": 13, "name": "Karina", "removed": false },
+                { "globalId": 14, "name": "Giselle", "removed": false },
+                { "globalId": 15, "name": "Winter", "removed": false },
+                { "globalId": 16, "name": "Ningning", "removed": false }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
 }

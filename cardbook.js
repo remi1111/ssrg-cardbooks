@@ -1,4 +1,4 @@
-// Configuration dictionary for grades
+// Grade Configurations
 const gradeConfig = {
     'x': { badge: '-', stars: '' },
     'c': { badge: 'C', stars: '★' },
@@ -8,67 +8,115 @@ const gradeConfig = {
     'r': { badge: 'R', stars: 'R' }
 };
 
-let totalGlobalCardsCount = 0;
+const gradeCycle = ['x', 'c', 'b', 'a', 's', 'r'];
 
-// 1. Fetch JSON and render the page on load
-document.addEventListener("DOMContentLoaded", async () => {
-    try {
-        const response = await fetch('/path/to/cards.json');
-        const data = await response.json();
-
-        // Count total cards globally for string length validation
-        totalGlobalCardsCount = data.artists.reduce((acc, artist) => {
-            return acc + artist.themes.reduce((tAcc, theme) => tAcc + theme.cards.length, 0);
-        }, 0);
-
-        renderCardbook(data.artists);
-
-        // Load any previously saved string from localStorage if available
-        loadSavedInventory();
-    } catch (error) {
-        console.error("Failed to load cards JSON:", error);
-    }
-});
-
-// 2. Dynamically build the HTML structure
-function renderCardbook(artists) {
+// 2. Render all games or filter by a specific game ID
+function renderCardbook(games, filterGameId = null) {
     const container = document.getElementById('cardbook-container');
     container.innerHTML = '';
 
-    artists.forEach(artist => {
-        let artistHTML = `<div class="artist-section"><h2>${artist.name}</h2>`;
+    const gamesToRender = filterGameId
+        ? games.filter(game => game.id === filterGameId)
+        : games;
 
-        artist.themes.forEach(theme => {
-            artistHTML += `
-                <div class="theme-section">
-                    <h3>${theme.name}</h3>
-                    <div class="cards-grid">
-            `;
+    gamesToRender.forEach(game => {
+        let gameHTML = `<div class="game-section">`;
 
-            theme.cards.forEach(card => {
-                artistHTML += `
-                    <div class="ss-card grade-x" data-global-index="${card.globalId}" data-grade="x">
-                        <span class="grade-badge">-</span>
-                        <span class="card-name">${card.name}</span>
-                        <span class="stars"></span>
-                    </div>
+        game.artists.forEach(artist => {
+            // Check if this artist has any non-removed cards to display
+            const hasVisibleCards = artist.themes.some(theme =>
+                theme.cards.some(card => !card.removed)
+            );
+
+            if (!hasVisibleCards) return; // Skip artist entirely if all cards are removed
+
+            gameHTML += `<div class="artist-section"><div class="artist-title">${artist.name}</div>`;
+
+            artist.themes.forEach(theme => {
+                // Filter out removed cards for this theme
+                const activeCards = theme.cards.filter(card => !card.removed);
+                if (activeCards.length === 0) return; // Skip theme if empty
+
+                let badgeHTML = '';
+                const type = (theme.themeType || 'normal').toLowerCase();
+                if (type === 'limited') {
+                    badgeHTML = `<span class="theme-badge limited">Limited Theme</span>`;
+                } else if (type === 'event' || type === 'event limited') {
+                    badgeHTML = `<span class="theme-badge event">Event Limited</span>`;
+                }
+
+                gameHTML += `
+                    <div class="theme-section">
+                        <div class="theme-header">
+                            <span class="theme-title">${theme.name}</span>
+                            ${badgeHTML}
+                        </div>
+                        <div class="cards-grid">
                 `;
+
+                activeCards.forEach(card => {
+                    gameHTML += `
+                        <div class="ss-card grade-x"
+                             data-global-index="${card.globalId}"
+                             data-grade="x"
+                             onclick="toggleCardGrade(this)">
+                            <span class="grade-badge">-</span>
+                            <span class="card-name">${card.name}</span>
+                            <span class="stars"></span>
+                        </div>
+                    `;
+                });
+
+                gameHTML += `</div></div>`;
             });
 
-            artistHTML += `</div></div>`;
+            gameHTML += `</div>`;
         });
 
-        artistHTML += `</div>`;
-        container.innerHTML += artistHTML;
+        gameHTML += `</div>`;
+        container.innerHTML += gameHTML;
     });
 }
 
-// 3. Export Function (Generates Master String)
-function exportCardString() {
-    let masterChars = new Array(totalGlobalCardsCount).fill('X');
-    const allCards = document.querySelectorAll('.ss-card');
+// --- 3. Interactive Card Click (Cycles Grades) ---
+function toggleCardGrade(cardElement) {
+    const currentGrade = cardElement.getAttribute('data-grade') || 'x';
+    const currentIndex = gradeCycle.indexOf(currentGrade);
+    const nextGrade = gradeCycle[(currentIndex + 1) % gradeCycle.length];
 
-    allCards.forEach(card => {
+    cardElement.classList.remove(`grade-${currentGrade}`);
+    cardElement.classList.add(`grade-${nextGrade}`);
+    cardElement.setAttribute('data-grade', nextGrade);
+
+    cardElement.querySelector('.grade-badge').innerText = gradeConfig[nextGrade].badge;
+    cardElement.querySelector('.stars').innerText = gradeConfig[nextGrade].stars;
+}
+
+// --- 4. Export Function ---
+function exportCardString() {
+    const displayBox = document.getElementById('cardStringBox');
+    if (!displayBox) return;
+
+    let currentMasterString = displayBox.value.trim();
+
+    // 1. If the input box is empty or the wrong length, fallback to LocalStorage or initialize a full 'X' string
+    if (currentMasterString.length !== totalGlobalCardsCount) {
+        currentMasterString = localStorage.getItem('ss_card_inventory') || "X".repeat(totalGlobalCardsCount);
+    }
+
+    // Convert to an array of characters so we can safely update specific indices
+    let masterChars = currentMasterString.split('');
+
+    // Ensure the array length matches total global cards
+    if (masterChars.length < totalGlobalCardsCount) {
+        masterChars = masterChars.concat(new Array(totalGlobalCardsCount - masterChars.length).fill('X'));
+    }
+
+    // 2. Select only the cards currently visible on this filtered page
+    const visibleCards = document.querySelectorAll('.ss-card');
+
+    // 3. Update ONLY the indices for the visible cards, leaving other games untouched
+    visibleCards.forEach(card => {
         const globalIndex = parseInt(card.getAttribute('data-global-index'), 10);
         const grade = (card.getAttribute('data-grade') || 'x').toUpperCase();
 
@@ -77,16 +125,15 @@ function exportCardString() {
         }
     });
 
-    const masterString = masterChars.join('');
-    const displayBox = document.getElementById('cardStringBox');
-    if (displayBox) displayBox.value = masterString;
+    // 4. Join back into the full master string and save
+    const updatedMasterString = masterChars.join('');
+    displayBox.value = updatedMasterString;
+    localStorage.setItem('ss_card_inventory', updatedMasterString);
 
-    // Optional: Save to browser storage for persistence
-    localStorage.setItem('ss_card_inventory', masterString);
-    alert("Exported full card inventory string!");
+    alert("Game inventory exported successfully without affecting other games!");
 }
 
-// 4. Import Function (Applies String to DOM)
+// --- 5. Import Function ---
 function importCardString() {
     const displayBox = document.getElementById('cardStringBox');
     if (!displayBox) return;
@@ -123,21 +170,17 @@ function importCardString() {
         card.classList.add(`grade-${targetGrade}`);
         card.setAttribute('data-grade', targetGrade);
 
-        const badgeSpan = card.querySelector('.grade-badge');
-        const starsSpan = card.querySelector('.stars');
-
-        if (badgeSpan) badgeSpan.innerText = gradeConfig[targetGrade].badge;
-        if (starsSpan) starsSpan.innerText = gradeConfig[targetGrade].stars;
+        card.querySelector('.grade-badge').innerText = gradeConfig[targetGrade].badge;
+        card.querySelector('.stars').innerText = gradeConfig[targetGrade].stars;
     });
 
     localStorage.setItem('ss_card_inventory', inputString);
-    alert("Cards successfully imported!");
 }
 
-// 5. Local Storage persistence helper
+// --- 6. Load Progress from LocalStorage ---
 function loadSavedInventory() {
     const savedString = localStorage.getItem('ss_card_inventory');
-    if (savedString && document.getElementById('cardStringBox')) {
+    if (savedString) {
         document.getElementById('cardStringBox').value = savedString;
         importCardString();
     }
