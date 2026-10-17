@@ -1,0 +1,84 @@
+{
+    "artists": [
+        {
+            "id": "twice",
+            "name": "TWICE",
+            "themes": [
+                {
+                    "id": "formula_of_love",
+                    "name": "Formula of Love",
+                    "cards": [
+                        {
+                            "globalId": 0,
+                            "name": "Nayeon"
+                        },
+                        {
+                            "globalId": 1,
+                            "name": "Jeongyeon"
+                        },
+                        {
+                            "globalId": 2,
+                            "name": "Momo"
+                        },
+                        {
+                            "globalId": 3,
+                            "name": "Sana"
+                        },
+                        {
+                            "globalId": 4,
+                            "name": "Jihyo"
+                        },
+                        {
+                            "globalId": 5,
+                            "name": "Mina"
+                        },
+                        {
+                            "globalId": 6,
+                            "name": "Dahyun"
+                        },
+                        {
+                            "globalId": 7,
+                            "name": "Chaeyoung"
+                        },
+                        {
+                            "globalId": 8,
+                            "name": "Tzuyu"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "itzy",
+            "name": "ITZY",
+            "themes": [
+                {
+                    "id": "checkmate",
+                    "name": "CHECKMATE",
+                    "cards": [
+                        {
+                            "globalId": 9,
+                            "name": "Yeji"
+                        },
+                        {
+                            "globalId": 10,
+                            "name": "Lia"
+                        },
+                        {
+                            "globalId": 11,
+                            "name": "Ryujin"
+                        },
+                        {
+                            "globalId": 12,
+                            "name": "Chaeryeong"
+                        },
+                        {
+                            "globalId": 13,
+                            "name": "Yuna"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
