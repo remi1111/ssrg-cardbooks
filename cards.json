@@ -1,50 +1,453 @@
 {
+  "max_id": 0,
   "games": [
     {
-      "id": "jypnation",
+      "id": "jyp",
       "name": "SuperStar JYPNATION",
       "artists": [
         {
-          "id": "twice",
-          "name": "TWICE",
-          "themes": [
-            {
-              "id": "fancy",
-              "name": "FANCY",
-              "themeType": "normal",
-              "cards": [
-                { "globalId": 0, "name": "Nayeon", "removed": false },
-                { "globalId": 1, "name": "Jeongyeon", "removed": false },
-                { "globalId": 2, "name": "Momo", "removed": false }
-              ]
-            },
-            {
-              "id": "formula_of_love",
-              "name": "Formula of Love",
-              "themeType": "limited",
-              "cards": [
-                { "globalId": 3, "name": "Nayeon", "removed": false },
-                { "globalId": 4, "name": "Jeongyeon", "removed": false },
-                { "globalId": 5, "name": "Momo", "removed": false }
-              ]
-            }
-          ]
+          "name": "J.Y. Park",
+          "card_slots": [
+            "Vocal",
+            "Dance",
+            "Rhythm"
+          ],
+          "themes": []
         },
         {
-          "id": "itzy",
+          "name": "Wonder Girls",
+          "card_slots": [
+            "Yeeun",
+            "Sunmi",
+            "Yubin",
+            "Hyreim"
+          ],
+          "themes": []
+        },
+        {
+          "name": "Sunmi",
+          "card_slots": [
+            "Vocal",
+            "Dance",
+            "Rhythm"
+          ],
+          "themes": []
+        },
+        {
+          "name": "YUBIN",
+          "card_slots": [
+            "Vocal",
+            "Dance",
+            "Rhythm"
+          ],
+          "themes": []
+        },
+        {
+          "name": "2AM",
+          "card_slots": [
+            "Jo Kwon",
+            "Lee Changmin",
+            "Lim Seulong",
+            "Jeong Jinwoon"
+          ],
+          "themes": []
+        },
+        {
+          "name": "2PM",
+          "card_slots": [
+            "Jun. K",
+            "Nichkhun",
+            "Taecyeon",
+            "Jang Wooyoung",
+            "Lee Junho",
+            "Chansung"
+          ],
+          "themes": []
+        },
+        {
+          "name": "Jun. K",
+          "card_slots": [
+            "Vocal",
+            "Dance",
+            "Rhythm"
+          ],
+          "themes": []
+        },
+        {
+          "name": "LEE JUNHO",
+          "card_slots": [
+            "Vocal",
+            "Dance",
+            "Rhythm"
+          ],
+          "themes": []
+        },
+        {
+          "name": "Jang Wooyoung",
+          "card_slots": [
+            "Vocal",
+            "Dance",
+            "Rhythm"
+          ],
+          "themes": []
+        },
+        {
+          "name": "NICHKHUN",
+          "card_slots": [
+            "Vocal",
+            "Dance",
+            "Rhythm"
+          ],
+          "themes": []
+        },
+        {
+          "name": "miss A",
+          "card_slots": [
+            "Fei",
+            "Min",
+            "Suzy"
+          ],
+          "themes": []
+        },
+        {
+          "name": "SUZY",
+          "card_slots": [
+            "Vocal",
+            "Dance",
+            "Rhythm"
+          ],
+          "themes": []
+        },
+        {
+          "name": "GOT7",
+          "card_slots": [
+            "JB",
+            "Mark",
+            "Jackson",
+            "Jinyoung",
+            "Youngjae",
+            "BamBam",
+            "Yugyeom"
+          ],
+          "themes": []
+        },
+        {
+          "name": "JJ Project",
+          "card_slots": [
+            "JB Vocal",
+            "Jinyoung Vocal",
+            "JB Dance",
+            "Jinyoung Dance"
+          ],
+          "themes": []
+        },
+        {
+          "name": "Jus2",
+          "card_slots": [
+            "JB Vocal",
+            "Yugyeom Vocal",
+            "JB Dance",
+            "Yugyeom Dance"
+          ],
+          "themes": []
+        },
+        {
+          "name": "15&",
+          "card_slots": [
+            "Yerin Baek Vocal",
+            "Jimin Park Vocal",
+            "Yerin Baek Dance",
+            "Jimin Park Dance"
+          ],
+          "themes": []
+        },
+        {
+          "name": "Baek A Yeon",
+          "card_slots": [
+            "Vocal",
+            "Dance",
+            "Rhythm"
+          ],
+          "themes": []
+        },
+        {
+          "name": "Yerin Baek",
+          "card_slots": [
+            "Vocal",
+            "Dance",
+            "Rhythm"
+          ],
+          "themes": []
+        },
+        {
+          "name": "Jimin Park",
+          "card_slots": [
+            "Vocal",
+            "Dance",
+            "Rhythm"
+          ],
+          "themes": []
+        },
+        {
+          "name": "Bernard Park",
+          "card_slots": [
+            "Vocal",
+            "Dance",
+            "Rhythm"
+          ],
+          "themes": []
+        },
+        {
+          "name": "DAY6",
+          "card_slots": [
+            "SUNGJIN",
+            "JAE",
+            "YOUNG K",
+            "WONPIL",
+            "DOWOON"
+          ],
+          "themes": []
+        },
+        {
+          "name": "DAY6 (Even of Day)",
+          "card_slots": [
+            "YOUNG K",
+            "WONPIL",
+            "DOWOON"
+          ],
+          "themes": []
+        },
+        {
+          "name": "Young K (DAY6)",
+          "card_slots": [
+            "Vocal",
+            "Dance",
+            "Rhythm"
+          ],
+          "themes": []
+        },
+        {
+          "name": "DOWOON (DAY6)",
+          "card_slots": [
+            "Vocal",
+            "Dance",
+            "Rhythm"
+          ],
+          "themes": []
+        },
+        {
+          "name": "WONPIL (DAY6)",
+          "card_slots": [
+            "Vocal",
+            "Dance",
+            "Rhythm"
+          ],
+          "themes": []
+        },
+        {
+          "name": "SUNGJIN (DAY6)",
+          "card_slots": [
+            "Vocal",
+            "Dance",
+            "Rhythm"
+          ],
+          "themes": []
+        },
+        {
+          "name": "twice",
+          "card_slots": [
+            "Nayeon",
+            "Jeongyeon",
+            "Momo",
+            "Sana",
+            "Jihyo",
+            "Mina",
+            "Dahyun",
+            "Chaeyoung",
+            "Tzuyu"
+          ],
+          "themes": []
+        },
+        {
+          "name": "NAYEON",
+          "card_slots": [
+            "Vocal",
+            "Dance",
+            "Rhythm"
+          ],
+          "themes": []
+        },
+        {
+          "name": "JIHYO",
+          "card_slots": [
+            "Vocal",
+            "Dance",
+            "Rhythm"
+          ],
+          "themes": []
+        },
+        {
+          "name": "TZUYU",
+          "card_slots": [
+            "Vocal",
+            "Dance",
+            "Rhythm"
+          ],
+          "themes": []
+        },
+        {
+          "name": "CHAEYOUNG",
+          "card_slots": [
+            "Vocal",
+            "Dance",
+            "Rhythm"
+          ],
+          "themes": []
+        },
+        {
+          "name": "Stray Kids",
+          "card_slots": [
+            "Bang Chan",
+            "Lee Know",
+            "Changbin",
+            "Hyunjin",
+            "Han",
+            "Felix",
+            "Seungmin",
+            "I.N"
+          ],
+          "themes": []
+        },
+        {
           "name": "ITZY",
-          "themes": [
-            {
-              "id": "checkmate",
-              "name": "CHECKMATE",
-              "themeType": "event",
-              "cards": [
-                { "globalId": 10, "name": "Yeji", "removed": false },
-                { "globalId": 11, "name": "Lia", "removed": false },
-                { "globalId": 12, "name": "Ryujin", "removed": false }
-              ]
-            }
-          ]
+          "card_slots": [
+            "YEJI",
+            "LIA",
+            "RYUJIN",
+            "CHAERYEONG",
+            "YUNA"
+          ],
+          "themes": []
+        },
+        {
+          "name": "ITZY (BORN TO BE)",
+          "card_slots": [
+            "YEJI",
+            "RYUJIN",
+            "CHAERYEONG",
+            "YUNA"
+          ],
+          "themes": []
+        },
+        {
+          "name": "YEJI",
+          "card_slots": [
+            "Vocal",
+            "Dance",
+            "Rhythm"
+          ],
+          "themes": []
+        },
+        {
+          "name": "YUNA",
+          "card_slots": [
+            "Vocal",
+            "Dance",
+            "Rhythm"
+          ],
+          "themes": []
+        },
+        {
+          "name": "Xdinary Heroes",
+          "card_slots": [
+            "Gun-il",
+            "Jungsu",
+            "Gaon",
+            "O.de",
+            "Jun Han",
+            "Jooyeon"
+          ],
+          "themes": []
+        },
+        {
+          "name": "NMIXX",
+          "card_slots": [
+            "LILY",
+            "HAEWON",
+            "SULLYOON",
+            "JINNI",
+            "BAE",
+            "JIWOO",
+            "KYUJIN"
+          ],
+          "themes": []
+        },
+        {
+          "name": "NiziU",
+          "card_slots": [
+            "MAKO",
+            "RIO",
+            "MAYA",
+            "RIKU",
+            "AYAKA",
+            "MAYUKA",
+            "RIMA",
+            "MIIHI",
+            "NINA"
+          ],
+          "themes": []
+        },
+        {
+          "name": "NiziU (Sour Grapes)",
+          "card_slots": [
+            "MAKO",
+            "MAYA",
+            "RIKU",
+            "AYAKA",
+            "MAYUKA",
+            "RIMA",
+            "MIIHI",
+            "NINA"
+          ],
+          "themes": []
+        },
+        {
+          "name": "NEXZ",
+          "card_slots": [
+            "TOMOYA",
+            "YU",
+            "HARU",
+            "SO GEON",
+            "SEITA",
+            "HYUI",
+            "YUKI"
+          ],
+          "themes": []
+        },
+        {
+          "name": "KickFlip",
+          "card_slots": [
+            "KYEHOON",
+            "AMARU",
+            "DONGHWA",
+            "JUWANG",
+            "MINJE",
+            "KEIJU",
+            "DONGHYEON"
+          ],
+          "themes": []
+        },
+        {
+          "name": "KickFlip (My First Kick)",
+          "card_slots": [
+            "KYEHOON",
+            "DONGHWA",
+            "JUWANG",
+            "MINJE",
+            "KEIJU",
+            "DONGHYEON"
+          ],
+          "themes": []
         }
       ]
     },
@@ -53,32 +456,8 @@
       "name": "SuperStar SMTOWN",
       "artists": [
         {
-          "id": "aespa",
           "name": "aespa",
-          "themes": [
-            {
-              "id": "next_level",
-              "name": "Next Level",
-              "themeType": "limited",
-              "cards": [
-                { "globalId": 6, "name": "Karina", "removed": false },
-                { "globalId": 7, "name": "Giselle", "removed": false },
-                { "globalId": 8, "name": "Winter", "removed": false },
-                { "globalId": 9, "name": "Ningning", "removed": false }
-              ]
-            },
-            {
-              "id": "next_level",
-              "name": "Next Level",
-              "themeType": "limited",
-              "cards": [
-                { "globalId": 13, "name": "Karina", "removed": false },
-                { "globalId": 14, "name": "Giselle", "removed": false },
-                { "globalId": 15, "name": "Winter", "removed": false },
-                { "globalId": 16, "name": "Ningning", "removed": false }
-              ]
-            }
-          ]
+          "themes": []
         }
       ]
     }
