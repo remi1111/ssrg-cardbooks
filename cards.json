@@ -1,5 +1,5 @@
 {
-  "max_id": 0,
+  "max_id": 3,
   "games": [
     {
       "id": "jyp",
@@ -12,7 +12,26 @@
             "Dance",
             "Rhythm"
           ],
-          "themes": []
+          "themes": [
+            {
+              "name": "Only One",
+              "themeType": "normal",
+              "cards": [
+                {
+                  "globalId": 0,
+                  "name": "Vocal"
+                },
+                {
+                  "globalId": 1,
+                  "name": "Dance"
+                },
+                {
+                  "globalId": 2,
+                  "name": "Rhythm"
+                }
+              ]
+            }
+          ]
         },
         {
           "name": "Wonder Girls",
