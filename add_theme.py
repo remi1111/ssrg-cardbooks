@@ -36,7 +36,7 @@ if __name__ == "__main__":
             break
 
     for a in artists:
-        if a["id"] == artist:
+        if a["name"] == artist:
             themes = a.get("themes", [])
             card_slots = a.get("card_slots", [])
             break
