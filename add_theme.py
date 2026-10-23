@@ -2,8 +2,6 @@ import json
 import os
 import sys
 
-print(sys.argv, len(sys.argv))
-
 FILENAME = 'cards.json'
 if __name__ == '__main__':
     with open(FILENAME, 'r') as f:
@@ -14,8 +12,6 @@ if __name__ == '__main__':
     if not max_id:
         print('max_id not found in cards.json')
         sys.exit(1)
-
-    print(max_id)
 
     if len(sys.argv) < 4:
         print('Usage: python add_theme.py <game_name> <artist_name> <theme_name> {theme_type}')
