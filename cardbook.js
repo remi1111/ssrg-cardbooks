@@ -25,7 +25,7 @@ function renderCardbook(games, filterGameId = null) {
         game.artists.forEach(artist => {
             // Check if this artist has any non-removed cards to display
             const hasVisibleCards = artist.themes.some(theme =>
-                theme.cards.some(card => !card.removed)
+                theme.cards.some(card => card.removed !== true)
             );
 
             if (!hasVisibleCards) return; // Skip artist entirely if all cards are removed
