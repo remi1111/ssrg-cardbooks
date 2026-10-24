@@ -80,7 +80,7 @@
 
         document.addEventListener("DOMContentLoaded", async () => {
             try {
-                const response = await fetch('/cards.json');
+                const response = await fetch('../cards.json');
                 cardsData = await response.json();
                 totalGlobalCardsCount = cardsData.max_id;
 
