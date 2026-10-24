@@ -307,44 +307,44 @@ body {
 }
 
 .ss-card.grade-b {
-    background: rgba(59, 130, 246, 0.22);
-    border-color: rgba(59, 130, 246, 0.55);
+    background: rgba(239, 68, 68, 0.22);
+    border-color: rgba(239, 68, 68, 0.6);
 }
 
 .ss-card.grade-b .grade-badge {
-    color: #60a5fa;
-    background: rgba(59, 130, 246, 0.22);
+    color: #f87171;
+    background: rgba(239, 68, 68, 0.22);
 }
 
 .ss-card.grade-a {
-    background: rgba(234, 179, 8, 0.22);
-    border-color: rgba(234, 179, 8, 0.55);
+    background: rgba(168, 85, 247, 0.22);
+    border-color: rgba(168, 85, 247, 0.6);
 }
 
 .ss-card.grade-a .grade-badge {
+    color: #c084fc;
+    background: rgba(168, 85, 247, 0.22);
+}
+
+.ss-card.grade-s {
+    background: rgba(234, 179, 8, 0.22);
+    border-color: rgba(234, 179, 8, 0.6);
+}
+
+.ss-card.grade-s .grade-badge {
     color: #facc15;
     background: rgba(234, 179, 8, 0.22);
 }
 
-.ss-card.grade-s {
-    background: rgba(168, 85, 247, 0.24);
-    border-color: rgba(168, 85, 247, 0.6);
-}
-
-.ss-card.grade-s .grade-badge {
-    color: #c084fc;
-    background: rgba(168, 85, 247, 0.24);
-}
-
 .ss-card.grade-r {
-    background: linear-gradient(135deg, rgba(236, 72, 153, 0.28) 0%, rgba(239, 68, 68, 0.28) 100%);
-    border-color: rgba(236, 72, 153, 0.65);
-    box-shadow: 0 0 10px rgba(236, 72, 153, 0.2);
+    background: rgba(217, 119, 6, 0.24);
+    border-color: rgba(245, 158, 11, 0.7);
+    box-shadow: 0 0 10px rgba(245, 158, 11, 0.2);
 }
 
 .ss-card.grade-r .grade-badge {
-    color: #f472b6;
-    background: rgba(236, 72, 153, 0.28);
+    color: #fbbf24;
+    background: rgba(217, 119, 6, 0.24);
     font-size: 20px;
 }
 
