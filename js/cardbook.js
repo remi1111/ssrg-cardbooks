@@ -75,7 +75,7 @@ function renderCardbook(games, filterGameId = null) {
 
             gameHTML += `<div class="artist-section"><div class="artist-title">${artist.name}</div>`;
 
-            artist.themes.forEach(theme => {
+            [...artist.themes].reverse().forEach(theme => {
                 // Filter out removed cards for this theme
                 const activeCards = theme.cards.filter(card => !card.removed);
                 if (activeCards.length === 0) return; // Skip theme if empty
