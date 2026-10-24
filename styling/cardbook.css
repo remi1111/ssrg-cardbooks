@@ -230,29 +230,35 @@ body {
 
 .cards-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
-    gap: 14px;
+    grid-template-columns: repeat(auto-fill, minmax(56px, 1fr));
+    gap: 12px 8px;
+}
+
+.card-item {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    align-items: center;
 }
 
 /* Card Elements & Grades */
 .ss-card {
     background: rgba(30, 41, 59, 0.5);
     border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 14px;
-    padding: 12px 10px;
+    border-radius: 10px;
+    padding: 0;
     display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    height: 140px;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
     cursor: pointer;
     transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
-    overflow: hidden;
 }
 
 .ss-card:hover {
-    transform: translateY(-4px);
+    transform: translateY(-2px);
     border-color: rgba(255, 255, 255, 0.25);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
 }
@@ -260,85 +266,85 @@ body {
 .grade-badge {
     font-size: 18px;
     font-weight: 800;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 4px;
+    margin: 0;
 }
 
 .card-name {
-    font-size: 12px;
+    width: 100%;
+    margin-top: 4px;
+    font-size: 10px;
     font-weight: 700;
     color: #e2e8f0;
     text-align: center;
-    margin: 6px 0;
     word-break: break-word;
 }
 
 /* Dynamic Card Grade Styles */
 .ss-card.grade-x {
-    background: rgba(30, 41, 59, 0.4);
-    border-color: rgba(255, 255, 255, 0.05);
-    opacity: 0.5;
+    background: rgba(100, 116, 139, 0.22);
+    border-color: rgba(100, 116, 139, 0.45);
 }
 
 .ss-card.grade-x .grade-badge {
-    color: #64748b;
-    background: rgba(255, 255, 255, 0.05);
+    color: #cbd5e1;
+    background: rgba(100, 116, 139, 0.22);
 }
 
 .ss-card.grade-c {
-    background: rgba(148, 163, 184, 0.12);
-    border-color: rgba(148, 163, 184, 0.3);
+    background: rgba(148, 163, 184, 0.22);
+    border-color: rgba(148, 163, 184, 0.55);
 }
 
 .ss-card.grade-c .grade-badge {
     color: #cbd5e1;
-    background: rgba(148, 163, 184, 0.2);
+    background: rgba(148, 163, 184, 0.22);
 }
 
 .ss-card.grade-b {
-    background: rgba(59, 130, 246, 0.12);
-    border-color: rgba(59, 130, 246, 0.35);
+    background: rgba(59, 130, 246, 0.22);
+    border-color: rgba(59, 130, 246, 0.55);
 }
 
 .ss-card.grade-b .grade-badge {
     color: #60a5fa;
-    background: rgba(59, 130, 246, 0.2);
+    background: rgba(59, 130, 246, 0.22);
 }
 
 .ss-card.grade-a {
-    background: rgba(234, 179, 8, 0.12);
-    border-color: rgba(234, 179, 8, 0.35);
+    background: rgba(234, 179, 8, 0.22);
+    border-color: rgba(234, 179, 8, 0.55);
 }
 
 .ss-card.grade-a .grade-badge {
     color: #facc15;
-    background: rgba(234, 179, 8, 0.2);
+    background: rgba(234, 179, 8, 0.22);
 }
 
 .ss-card.grade-s {
-    background: rgba(168, 85, 247, 0.15);
-    border-color: rgba(168, 85, 247, 0.4);
+    background: rgba(168, 85, 247, 0.24);
+    border-color: rgba(168, 85, 247, 0.6);
 }
 
 .ss-card.grade-s .grade-badge {
     color: #c084fc;
-    background: rgba(168, 85, 247, 0.25);
+    background: rgba(168, 85, 247, 0.24);
 }
 
 .ss-card.grade-r {
-    background: linear-gradient(135deg, rgba(236, 72, 153, 0.2) 0%, rgba(239, 68, 68, 0.2) 100%);
-    border-color: rgba(236, 72, 153, 0.5);
-    box-shadow: 0 0 15px rgba(236, 72, 153, 0.15);
+    background: linear-gradient(135deg, rgba(236, 72, 153, 0.28) 0%, rgba(239, 68, 68, 0.28) 100%);
+    border-color: rgba(236, 72, 153, 0.65);
+    box-shadow: 0 0 10px rgba(236, 72, 153, 0.2);
 }
 
 .ss-card.grade-r .grade-badge {
     color: #f472b6;
-    background: rgba(236, 72, 153, 0.3);
+    background: rgba(236, 72, 153, 0.28);
     font-size: 20px;
 }
 

@@ -99,14 +99,17 @@ function renderCardbook(games, filterGameId = null) {
 
                 activeCards.forEach(card => {
                     gameHTML += `
-                        <button type="button"
-                            class="ss-card grade-x"
-                             data-global-index="${card.globalId}"
-                             data-grade="x"
-                             onclick="openGradePicker(this)">
-                            <span class="grade-badge">-</span>
+                        <div class="card-item">
+                            <button type="button"
+                                class="ss-card grade-x"
+                                aria-label="${card.name}"
+                                data-global-index="${card.globalId}"
+                                data-grade="x"
+                                onclick="openGradePicker(this)">
+                                <span class="grade-badge">-</span>
+                            </button>
                             <span class="card-name">${card.name}</span>
-                        </button>
+                        </div>
                     `;
                 });
 
