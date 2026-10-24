@@ -345,6 +345,7 @@ body {
 .grade-picker {
     width: min(440px, calc(100vw - 32px));
     max-width: calc(100vw - 32px);
+    margin: auto;
     border: 1px solid rgba(255, 255, 255, 0.12);
     border-radius: 20px;
     padding: 24px;
