@@ -50,6 +50,36 @@
 
         <!-- Dynamic Container where cards load from JSON -->
         <div id="cardbook-container"></div>
+        <dialog class="grade-picker" id="gradePicker" aria-labelledby="gradePickerTitle">
+            <h2 id="gradePickerTitle">Select card grade</h2>
+            <div class="grade-options" role="group" aria-label="Card grades">
+                <button type="button" class="grade-option grade-x" data-grade="x" aria-label="Grade X"
+                    aria-pressed="false" onclick="selectCardGrade('x')">
+                    <span class="grade-badge">-</span>
+                </button>
+                <button type="button" class="grade-option grade-c" data-grade="c" aria-label="Grade C"
+                    aria-pressed="false" onclick="selectCardGrade('c')">
+                    <span class="grade-badge">C</span>
+                </button>
+                <button type="button" class="grade-option grade-b" data-grade="b" aria-label="Grade B"
+                    aria-pressed="false" onclick="selectCardGrade('b')">
+                    <span class="grade-badge">B</span>
+                </button>
+                <button type="button" class="grade-option grade-a" data-grade="a" aria-label="Grade A"
+                    aria-pressed="false" onclick="selectCardGrade('a')">
+                    <span class="grade-badge">A</span>
+                </button>
+                <button type="button" class="grade-option grade-s" data-grade="s" aria-label="Grade S"
+                    aria-pressed="false" onclick="selectCardGrade('s')">
+                    <span class="grade-badge">S</span>
+                </button>
+                <button type="button" class="grade-option grade-r" data-grade="r" aria-label="Grade R"
+                    aria-pressed="false" onclick="selectCardGrade('r')">
+                    <span class="grade-badge">R</span>
+                </button>
+            </div>
+            <button type="button" class="grade-picker-cancel" onclick="closeGradePicker()">Cancel</button>
+        </dialog>
 
     </div>
     <script>
@@ -61,20 +91,7 @@
             try {
                 const response = await fetch('./cards.json');
                 cardsData = await response.json();
-
-                // Calculate total global cards based on the highest globalId found,
-                // ensuring indices never shift when cards are removed.
-                let maxId = -1;
-                cardsData.games.forEach(game => {
-                    game.artists.forEach(artist => {
-                        artist.themes.forEach(theme => {
-                            theme.cards.forEach(card => {
-                                if (card.globalId > maxId) maxId = card.globalId;
-                            });
-                        });
-                    });
-                });
-                totalGlobalCardsCount = maxId + 1;
+                totalGlobalCardsCount = cardsData.max_id;
 
                 renderCardbook(cardsData.games, "jyp");
                 loadSavedInventory();
@@ -83,7 +100,6 @@
                 console.error("Failed to load cards.json:", error);
             }
         });
-
     </script>
     <script src="cardbook.js"></script>
 </body>

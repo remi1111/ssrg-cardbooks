@@ -739,3 +739,79 @@ body {
     color: #f472b6;
     font-weight: 800;
 }
+
+.grade-picker {
+    width: min(440px, calc(100vw - 32px));
+    max-width: calc(100vw - 32px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 20px;
+    padding: 24px;
+    background: #11131d;
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.6);
+    color: var(--white);
+}
+
+.grade-picker::backdrop {
+    background: rgba(3, 4, 8, 0.78);
+    backdrop-filter: blur(4px);
+}
+
+.grade-picker h2 {
+    margin: 0 0 18px;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.grade-options {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+}
+
+.grade-option {
+    display: flex;
+    min-width: 0;
+    min-height: 76px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 12px;
+    padding: 10px 6px;
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--white);
+    cursor: pointer;
+    transition: border-color 160ms ease, background 160ms ease, transform 160ms ease;
+}
+
+.grade-option:hover {
+    transform: translateY(-2px);
+    border-color: rgba(34, 211, 238, 0.55);
+    background: rgba(34, 211, 238, 0.08);
+}
+
+.grade-option[aria-pressed="true"] {
+    border-color: var(--cyan);
+    background: rgba(34, 211, 238, 0.12);
+    box-shadow: 0 0 0 1px rgba(34, 211, 238, 0.25);
+}
+
+.grade-option:focus-visible,
+.grade-picker-cancel:focus-visible {
+    outline: 2px solid var(--cyan);
+    outline-offset: 3px;
+}
+
+.grade-picker-cancel {
+    display: block;
+    margin: 18px 0 0 auto;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 10px;
+    padding: 8px 14px;
+    background: rgba(255, 255, 255, 0.06);
+    color: #cbd5e1;
+    font: inherit;
+    font-size: 13px;
+    cursor: pointer;
+}

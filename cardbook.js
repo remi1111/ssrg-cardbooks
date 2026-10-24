@@ -1,14 +1,57 @@
 // Grade Configurations
 const gradeConfig = {
-    'x': { badge: '-', stars: '' },
-    'c': { badge: 'C', stars: '★' },
-    'b': { badge: 'B', stars: '★★' },
-    'a': { badge: 'A', stars: '★★★' },
-    's': { badge: 'S', stars: '★★★★' },
-    'r': { badge: 'R', stars: 'R' }
+    'x': { badge: '-' },
+    'c': { badge: 'C' },
+    'b': { badge: 'B' },
+    'a': { badge: 'A' },
+    's': { badge: 'S' },
+    'r': { badge: 'R' }
 };
-
 const gradeCycle = ['x', 'c', 'b', 'a', 's', 'r'];
+
+const gradePicker = document.getElementById('gradePicker');
+let selectedCard = null;
+
+function openGradePicker(cardElement) {
+    selectedCard = cardElement;
+    const currentGrade = cardElement.dataset.grade || 'x';
+    const options = gradePicker.querySelectorAll('.grade-option');
+    let selectedOption = null;
+
+    options.forEach(option => {
+        const isSelected = option.dataset.grade === currentGrade;
+        option.setAttribute('aria-pressed', isSelected);
+        if (isSelected) selectedOption = option;
+    });
+
+    gradePicker.showModal();
+    (selectedOption || options[0]).focus();
+}
+
+function selectCardGrade(grade) {
+    if (!selectedCard || !gradeConfig[grade]) return;
+
+    const previousGrade = selectedCard.dataset.grade || 'x';
+    selectedCard.classList.remove(`grade-${previousGrade}`);
+    selectedCard.classList.add(`grade-${grade}`);
+    selectedCard.dataset.grade = grade;
+    selectedCard.querySelector('.grade-badge').textContent = gradeConfig[grade].badge;
+
+    gradePicker.close();
+}
+
+function closeGradePicker() {
+    gradePicker.close();
+}
+
+gradePicker.addEventListener('close', () => {
+    if (selectedCard) selectedCard.focus();
+    selectedCard = null;
+});
+
+gradePicker.addEventListener('click', event => {
+    if (event.target === gradePicker) gradePicker.close();
+});
 
 // 2. Render all games or filter by a specific game ID
 function renderCardbook(games, filterGameId = null) {
@@ -56,14 +99,14 @@ function renderCardbook(games, filterGameId = null) {
 
                 activeCards.forEach(card => {
                     gameHTML += `
-                        <div class="ss-card grade-x"
+                        <button type="button"
+                            class="ss-card grade-x"
                              data-global-index="${card.globalId}"
                              data-grade="x"
-                             onclick="toggleCardGrade(this)">
+                             onclick="openGradePicker(this)">
                             <span class="grade-badge">-</span>
                             <span class="card-name">${card.name}</span>
-                            <span class="stars"></span>
-                        </div>
+                        </button>
                     `;
                 });
 
@@ -89,7 +132,6 @@ function toggleCardGrade(cardElement) {
     cardElement.setAttribute('data-grade', nextGrade);
 
     cardElement.querySelector('.grade-badge').innerText = gradeConfig[nextGrade].badge;
-    cardElement.querySelector('.stars').innerText = gradeConfig[nextGrade].stars;
 }
 
 // --- 4. Export Function ---
@@ -171,7 +213,6 @@ function importCardString() {
         card.setAttribute('data-grade', targetGrade);
 
         card.querySelector('.grade-badge').innerText = gradeConfig[targetGrade].badge;
-        card.querySelector('.stars').innerText = gradeConfig[targetGrade].stars;
     });
 
     localStorage.setItem('ss_card_inventory', inputString);
