@@ -174,8 +174,6 @@ function exportCardString() {
     const updatedMasterString = masterChars.join('');
     displayBox.value = updatedMasterString;
     localStorage.setItem('ss_card_inventory', updatedMasterString);
-
-    alert("Game inventory exported successfully without affecting other games!");
 }
 
 // --- 5. Import Function ---
